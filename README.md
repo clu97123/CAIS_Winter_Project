@@ -1,2 +1,14 @@
 # CAIS_Winter_Project
 CAIS++ Winter Project
+Catherine Lu
+clu97123@usc.edu
+
+My project was to create a model that could determine whether or not a news headline was sarcastic. In the digital information age, misinformation is easily spread, and it is necessary to start training AI to recognize sarcasm.
+
+The dataset I used was the News Headlines for Sarcasm Detection dataset (v2). This dataset had 28,619 headlines from TheOnion and HuffPost. Each headline was labeled using binary classification for is_sarcastic, where 1 was sarcastic and 0 otherwise. There was also a column for the link to the original article, but that was not used for training the model. 
+
+I decided to use a pretrained BERT model, specifically BERT base model (uncased), since all the headlines in the dataset were in lowercase. Since it was my first time creating a NLP model, I borrowed most of the code from the Lesson 4 Notebook. One difference I made was to separate the original dataset into a training, validation, and testing dataset. The training and validation datasets were 64% and 16% of the original dataset respectively (18,316 and 4,579 sentences) and to be used during training. The testing dataset was the remaining 20% of the dataset, kept hidden from the model so it could be used to evaluate its accuracy after being trained. I used the standard batch size of 32. As the dataset was relatively small for an NLP model, and BERT has a catastrophic forgetting issue, a very small learning rate of 2e-5 was used. Using Adam as the optimizer and setting epsilon to 1e-8 was taken from the L4 notebook. Only 2 epochs were used, since the authors of BERT recommend between 2-4 epochs, and training on my laptop takes a fairly long time (~20 minutes per run). Given that 2 epochs produced a fairly high accuracy score, I used the minimum number of epochs in the interest of time.
+
+After being trained, the model was producing an accuracy score of 93% on the validation dataset. I then ran the testing dataset through the model, which produced a very high Matthew's Correlation Coefficient of 0.846. I also took the accuracy, precision, and recall scores, which were 0.923, 0.926, and 0.91 respectively. This meant that the model was very good at predicting both positive and negative samples correctly. 
+
+The News Headlines for Sarcasm Detection dataset provided very clean and easy to understand data using real and satirical articles as examples. There is some limitation in only using TheOnion for sarcastic headlines and HuffPost for serious headlines, as news companies can write articles about different content, as well as have different writers with varying writing styles. The dataset could be improved by including headlines from multiple news companies in the future. Additionally, for the goal of "detecting sarcasm online", 
