@@ -1,7 +1,7 @@
 # CAIS_Winter_Project
 CAIS++ Winter Project\
 Catherine Lu\
-clu97123@usc.edu\
+clu97123@usc.edu
 
 My project was to create a model that could determine whether or not a news headline was sarcastic. In the digital information age, misinformation is easily spread, and it is necessary to start training AI to recognize sarcasm.
 
